@@ -1,6 +1,14 @@
 "use client";
 import Link from "next/link";
-import { NAV_LINKS } from "@/lib/constants";
+
+const NAV_LINKS = [
+  { label: "Herbs", href: "/herbs" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Guides", href: "/guides" },
+  { label: "Research", href: "/research" },
+  { label: "Myths", href: "/myths" },
+  { label: "About", href: "/about" },
+];
 
 export default function Navbar() {
   return (
@@ -19,7 +27,7 @@ export default function Navbar() {
           HerbVerdict
         </span>
       </Link>
-      <div style={{ display: "flex", gap: 32 }}>
+      <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
         {NAV_LINKS.map(item => (
           <Link key={item.href} href={item.href} style={{
             fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 500, color: "var(--medium)",

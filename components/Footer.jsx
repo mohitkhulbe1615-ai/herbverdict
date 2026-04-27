@@ -47,10 +47,13 @@ export default function Footer() {
             <FooterCol title="Content" links={[
               { label: "Herb Library", href: "/herbs" },
               { label: "Product Reviews", href: "/reviews" },
-              { label: "Methodology", href: "/methodology" },
+              { label: "Consumer Guides", href: "/guides" },
+              { label: "Research News", href: "/research" },
+              { label: "Myth Busting", href: "/myths" },
             ]} />
             <FooterCol title="About" links={[
               { label: "About Us", href: "/about" },
+              { label: "Methodology", href: "/methodology" },
               { label: "Disclaimer", href: "/disclaimer" },
             ]} />
           </div>

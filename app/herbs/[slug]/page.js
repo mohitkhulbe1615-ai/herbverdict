@@ -1,117 +1,45 @@
 import { notFound } from "next/navigation";
 import { herbs, getHerbBySlug, getVerdictClass } from "@/lib/herbs";
 import { getHerbContent, getHerbSlugs } from "@/lib/content";
-import { ArticleSchema } from "@/components/Schema";
+import ArticlePage from "@/components/ArticlePage";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 import Newsletter from "@/components/Newsletter";
 
 export function generateStaticParams() {
   const dataSlugs = herbs.map(h => ({ slug: h.slug }));
   const fileSlugs = getHerbSlugs().map(s => ({ slug: s }));
-  const allSlugs = [...new Map([...dataSlugs, ...fileSlugs].map(s => [s.slug, s])).values()];
-  return allSlugs;
+  return [...new Map([...dataSlugs, ...fileSlugs].map(s => [s.slug, s])).values()];
 }
 
 export function generateMetadata({ params }) {
-  const fileContent = getHerbContent(params.slug);
-  if (fileContent) {
-    const fm = fileContent.frontmatter;
-    return { title: fm.title, description: fm.description };
-  }
+  const content = getHerbContent(params.slug);
+  if (content) return { title: content.frontmatter.title, description: content.frontmatter.description };
   const herb = getHerbBySlug(params.slug);
   if (!herb) return {};
-  return {
-    title: `${herb.name} Evidence Scorecard`,
-    description: herb.summary,
-  };
+  return { title: `${herb.name} Evidence Scorecard`, description: herb.summary };
 }
 
 export default function HerbPage({ params }) {
-  const fileContent = getHerbContent(params.slug);
+  const content = getHerbContent(params.slug);
+  if (content) return <ArticlePage content={content} section="herbs" slug={params.slug} />;
 
-  // Render from MDX file (as raw HTML)
-  if (fileContent) {
-    const fm = fileContent.frontmatter;
-    return (
-      <>
-        <ArticleSchema
-          title={fm.title}
-          description={fm.description}
-          datePublished={fm.publishDate}
-          dateModified={fm.lastUpdated}
-          slug={`herbs/${params.slug}`}
-          type="herb"
-        />
-        {fileContent.jsonLd && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(fileContent.jsonLd) }}
-          />
-        )}
-        {fileContent.css && (
-          <style dangerouslySetInnerHTML={{ __html: fileContent.css }} />
-        )}
-        <article
-          className="container article-body"
-          style={{ padding: "24px 40px 0", maxWidth: 820, margin: "0 auto" }}
-          dangerouslySetInnerHTML={{ __html: fileContent.html }}
-        />
-        <Newsletter variant="light" />
-      </>
-    );
-  }
-
-  // Fallback to data-defined herb placeholder
   const herb = getHerbBySlug(params.slug);
   if (!herb) notFound();
 
   return (
     <>
-      <ArticleSchema
-        title={`${herb.name} Evidence Scorecard`}
-        description={herb.summary}
-        datePublished="2026-04-27"
-        slug={`herbs/${herb.slug}`}
-        type="herb"
-      />
       <article className="container" style={{ padding: "48px 40px 0" }}>
-        <div style={{ marginBottom: 36 }}>
-          <div className="label" style={{ marginBottom: 12 }}>Evidence Scorecard</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
-            <span style={{ fontSize: 40 }}>{herb.icon}</span>
-            <div>
-              <h1 style={{ fontSize: 36, fontWeight: 700, margin: 0, lineHeight: 1.1 }}>{herb.name}</h1>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--light-text)", marginTop: 4 }}>
-                {herb.botanical}
-              </div>
-            </div>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 16 }}>
-            <span className={`verdict-badge ${getVerdictClass(herb.verdict)}`} style={{ fontSize: 13, padding: "7px 18px" }}>
-              {herb.verdict}
-            </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--light-text)" }}>
-              Based on {herb.studies}+ clinical studies
-            </span>
-          </div>
-        </div>
-        <div style={{
-          display: "flex", gap: 24, fontFamily: "var(--font-sans)", fontSize: 12,
-          color: "var(--light-text)", borderTop: "1px solid var(--border)",
-          borderBottom: "1px solid var(--border)", padding: "12px 0", marginBottom: 36,
-        }}>
-          <span>By <strong style={{ color: "var(--dark)" }}>HerbVerdict Editorial</strong></span>
-          <span>Last updated: April 2026</span>
+        <div className="label" style={{ marginBottom: 12 }}>Evidence Scorecard</div>
+        <h1 style={{ fontSize: 36, fontWeight: 700, margin: "0 0 12px" }}>{herb.name}</h1>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--light-text)" }}>{herb.botanical}</p>
+        <div style={{ marginTop: 16 }}>
+          <span className={`verdict-badge ${getVerdictClass(herb.verdict)}`}>{herb.verdict}</span>
         </div>
         <DisclaimerBanner />
         <div className="article-body">
-          <h2>What is {herb.name}?</h2>
           <p>{herb.summary}</p>
-          <p style={{ color: "var(--light-text)", fontStyle: "italic" }}>
-            Full article coming soon. This herb is queued for research.
-          </p>
+          <p style={{ color: "var(--light-text)", fontStyle: "italic" }}>Full article coming soon.</p>
         </div>
-        <DisclaimerBanner />
       </article>
       <Newsletter variant="light" />
     </>
