@@ -1,14 +1,9 @@
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { herbs, getHerbBySlug, getVerdictClass } from "@/lib/herbs";
 import { getHerbContent, getHerbSlugs } from "@/lib/content";
 import { ArticleSchema } from "@/components/Schema";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 import Newsletter from "@/components/Newsletter";
-
-const mdxComponents = {
-  DisclaimerBanner,
-};
 
 export function generateStaticParams() {
   const dataSlugs = herbs.map(h => ({ slug: h.slug }));
@@ -34,6 +29,7 @@ export function generateMetadata({ params }) {
 export default function HerbPage({ params }) {
   const fileContent = getHerbContent(params.slug);
 
+  // Render from MDX file (as raw HTML)
   if (fileContent) {
     const fm = fileContent.frontmatter;
     return (
@@ -46,16 +42,26 @@ export default function HerbPage({ params }) {
           slug={`herbs/${params.slug}`}
           type="herb"
         />
-        <article className="container" style={{ padding: "24px 40px 0", maxWidth: 820, margin: "0 auto" }}>
-          <div className="article-body">
-            <MDXRemote source={fileContent.content} components={mdxComponents} />
-          </div>
-        </article>
+        {fileContent.jsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(fileContent.jsonLd) }}
+          />
+        )}
+        {fileContent.css && (
+          <style dangerouslySetInnerHTML={{ __html: fileContent.css }} />
+        )}
+        <article
+          className="container article-body"
+          style={{ padding: "24px 40px 0", maxWidth: 820, margin: "0 auto" }}
+          dangerouslySetInnerHTML={{ __html: fileContent.html }}
+        />
         <Newsletter variant="light" />
       </>
     );
   }
 
+  // Fallback to data-defined herb placeholder
   const herb = getHerbBySlug(params.slug);
   if (!herb) notFound();
 
