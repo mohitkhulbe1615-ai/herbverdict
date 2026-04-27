@@ -1,8 +1,29 @@
 import Link from "next/link";
 import { herbs, getVerdictClass } from "@/lib/herbs";
+import { getReviewSlugs, getReviewContent, getGuideSlugs, getGuideContent, getResearchSlugs, getResearchContent, getMythSlugs, getMythContent } from "@/lib/content";
 import Newsletter from "@/components/Newsletter";
 
+const SECTION_COLORS = {
+  reviews: { color: "#1565C0", bg: "#E3F2FD", label: "Product Review" },
+  guides: { color: "#E65100", bg: "#FFF3E0", label: "Consumer Guide" },
+  research: { color: "#6A1B9A", bg: "#F3E5F5", label: "Research News" },
+  myths: { color: "#C62828", bg: "#FFEBEE", label: "Myth Busting" },
+};
+
+function getArticles(section, getSlugs, getContent) {
+  return getSlugs().map(slug => {
+    const c = getContent(slug);
+    return { slug, section, ...c.frontmatter };
+  });
+}
+
 export default function Home() {
+  const reviews = getArticles("reviews", getReviewSlugs, getReviewContent);
+  const guides = getArticles("guides", getGuideSlugs, getGuideContent);
+  const research = getArticles("research", getResearchSlugs, getResearchContent);
+  const myths = getArticles("myths", getMythSlugs, getMythContent);
+  const allOther = [...reviews, ...guides, ...research, ...myths];
+
   return (
     <>
       {/* ═══ HERO ═══ */}
@@ -52,8 +73,8 @@ export default function Home() {
         ))}
       </div>
 
-      {/* ═══ EVIDENCE SCORECARDS ═══ */}
-      <section style={{ maxWidth: 900, margin: "0 auto", padding: "60px 40px" }}>
+      {/* ═══ HERB SCORECARDS ═══ */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "60px 40px 40px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
           <div>
             <div className="label" style={{ marginBottom: 8 }}>Evidence Scorecards</div>
@@ -66,7 +87,6 @@ export default function Home() {
         <p style={{ fontSize: 15, color: "var(--light-text)", marginTop: 4, marginBottom: 32, fontWeight: 300 }}>
           Each scorecard summarizes every available clinical trial — sample sizes, findings, limitations, and an honest verdict.
         </p>
-
         <div className="card-list">
           {herbs.map(herb => (
             <Link key={herb.slug} href={`/herbs/${herb.slug}`} className="card-list-item herb-row" style={{
@@ -75,9 +95,7 @@ export default function Home() {
             }}>
               <span style={{ fontSize: 24, textAlign: "center" }}>{herb.icon}</span>
               <div>
-                <div style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 600, color: "var(--dark)" }}>
-                  {herb.name}
-                </div>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 600, color: "var(--dark)" }}>{herb.name}</div>
                 <div style={{ fontSize: 13, color: "var(--light-text)", marginTop: 2, fontWeight: 300 }}>{herb.tagline}</div>
               </div>
               <div className="study-count" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--light-text)", whiteSpace: "nowrap" }}>
@@ -89,8 +107,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ HOW WE WORK ═══ */}
+      {/* ═══ MORE FROM HERBVERDICT ═══ */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "20px 40px 60px" }}>
+        <div className="label" style={{ marginBottom: 8 }}>Beyond Scorecards</div>
+        <h2 style={{ fontSize: 32, fontWeight: 700, margin: "0 0 12px" }}>More from HerbVerdict</h2>
+        <p style={{ fontSize: 15, color: "var(--light-text)", marginBottom: 32, fontWeight: 300 }}>
+          Product comparisons, consumer guides, research news, and myth investigations.
+        </p>
+
+        <div className="card-list">
+          {allOther.map(article => {
+            const sc = SECTION_COLORS[article.section];
+            return (
+              <Link
+                key={article.slug}
+                href={`/${article.section}/${article.slug}`}
+                className="card-list-item"
+                style={{ display: "block", padding: "18px 24px" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+                  <span style={{
+                    fontFamily: "var(--font-sans)", fontSize: 11, fontWeight: 700,
+                    color: sc.color, background: sc.bg,
+                    padding: "3px 10px", borderRadius: 20, letterSpacing: "0.04em",
+                  }}>{sc.label}</span>
+                </div>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 600, color: "var(--dark)" }}>
+                  {article.title}
+                </div>
+                <div style={{ fontSize: 13, color: "var(--light-text)", marginTop: 4, fontWeight: 300, lineHeight: 1.5 }}>
+                  {article.description}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ═══ SECTION LINKS ═══ */}
       <section style={{ borderTop: "1px solid var(--border)", background: "var(--bg-warm)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "48px 40px" }}>
+          <div className="label" style={{ marginBottom: 8 }}>Explore</div>
+          <h2 style={{ fontSize: 28, fontWeight: 700, margin: "0 0 28px" }}>Browse by section</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 14 }}>
+            {[
+              { href: "/herbs", label: "Herb Scorecards", desc: "Evidence ratings for Ayurvedic herbs", count: "6 herbs" },
+              { href: "/reviews", label: "Product Reviews", desc: "Label-by-label brand comparisons", count: `${reviews.length} reviews` },
+              { href: "/guides", label: "Consumer Guides", desc: "How to read labels, check purity", count: `${guides.length} guides` },
+              { href: "/research", label: "Research News", desc: "CCRAS, AYUSH, WHO updates", count: `${research.length} article${research.length !== 1 ? "s" : ""}` },
+              { href: "/myths", label: "Myth Busting", desc: "Claims vs clinical evidence", count: `${myths.length} investigation${myths.length !== 1 ? "s" : ""}` },
+            ].map(s => (
+              <Link key={s.href} href={s.href} style={{
+                display: "block", padding: "18px 16px",
+                background: "#fff", border: "1px solid var(--border)", borderRadius: 10,
+                textDecoration: "none",
+              }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 700, color: "var(--dark)", marginBottom: 4 }}>{s.label}</div>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: 12, color: "var(--light-text)", lineHeight: 1.5, marginBottom: 8 }}>{s.desc}</div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--green-accent)" }}>{s.count}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ HOW WE WORK ═══ */}
+      <section style={{ borderTop: "1px solid var(--border)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 40px" }}>
           <div className="label" style={{ marginBottom: 8 }}>How we work</div>
           <h2 style={{ fontSize: 32, fontWeight: 700, margin: "0 0 36px" }}>Research you can verify</h2>
