@@ -1,7 +1,7 @@
 import { getAllContent } from "@/lib/content";
 import { herbs } from "@/lib/herbs";
 
-const BASE_URL = "https://herbverdict.com";
+const BASE_URL = "https://www.herbverdict.com";
 
 export default function sitemap() {
   const now = new Date().toISOString();

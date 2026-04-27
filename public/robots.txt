@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://herbverdict.com/sitemap.xml
+Sitemap: https://www.herbverdict.com/sitemap.xml
