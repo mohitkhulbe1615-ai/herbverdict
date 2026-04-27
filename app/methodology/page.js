@@ -105,7 +105,7 @@ export default function MethodologyPage() {
         <h2>Corrections Policy</h2>
         <p>
           If we get something wrong, we fix it. If you believe any claim on this site misrepresents a
-          study's findings, please contact us at <strong>[your-email@herbverdict.com]</strong> with the
+          study's findings, please contact us at <strong>ash@herbverdict.com</strong> with the
           specific article and study in question. We will review the claim and issue a correction within
           48 hours if warranted. All corrections are noted at the top of the affected article with the
           date and nature of the change.

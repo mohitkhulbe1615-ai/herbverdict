@@ -52,7 +52,7 @@ export default function DisclaimerPage() {
         <h2>Contact</h2>
         <p>
           For questions about this disclaimer or our editorial practices, contact us at{" "}
-          <strong>[your-email@herbverdict.com]</strong>.
+          <strong>ash@herbverdict.com</strong>.
         </p>
       </div>
     </div>

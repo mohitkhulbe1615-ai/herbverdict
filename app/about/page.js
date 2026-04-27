@@ -37,7 +37,7 @@ export default function AboutPage() {
         <h2>Who runs this?</h2>
         <p>
           {/* REPLACE WITH YOUR REAL BIO */}
-          HerbVerdict is founded and edited by [Your Name], a research editor based in India. [Your Name]
+          HerbVerdict is founded and edited by Ash, a research editor based in India. Ash
           is not a medical professional — and that's stated clearly on every page. The publication's credibility
           comes from its methodology, not from credentials: every claim is linked to its source, every study
           summary includes limitations, and every verdict is justified with specific evidence.
@@ -66,7 +66,7 @@ export default function AboutPage() {
 
         <h2>Contact</h2>
         <p>
-          For corrections, feedback, or press inquiries: <strong>[your-email@herbverdict.com]</strong>
+          For corrections, feedback, or press inquiries: <strong>ash@herbverdict.com</strong>
         </p>
         <p>
           We take factual accuracy seriously. If you believe any claim on this site is incorrect or
