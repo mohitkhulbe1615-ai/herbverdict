@@ -1,33 +1,29 @@
-import Link from "next/link";
 import { getGuideSlugs, getGuideContent } from "@/lib/content";
+import SectionIndex from "@/components/SectionIndex";
 
 export const metadata = {
   title: "Consumer Guides",
   description: "Practical guides for Indian consumers — how to read labels, check product purity, and make informed supplement decisions.",
 };
 
-export default function GuidesIndex() {
+export default function GuidesPage() {
   const slugs = getGuideSlugs();
-  const guides = slugs.map(slug => {
+  const articles = slugs.map(slug => {
     const c = getGuideContent(slug);
-    return { slug, ...c.frontmatter };
+    return { slug, title: c.frontmatter.title, description: c.frontmatter.description, href: `/guides/${slug}` };
   });
 
   return (
-    <div className="container" style={{ padding: "60px 40px" }}>
-      <div className="label label-green" style={{ marginBottom: 12 }}>Consumer Guides</div>
-      <h1 style={{ fontSize: 40, fontWeight: 700, margin: "0 0 12px" }}>Guides</h1>
-      <p style={{ fontSize: 17, color: "var(--medium)", maxWidth: 600, lineHeight: 1.7, fontWeight: 300, marginBottom: 48 }}>
-        Practical consumer education — no health claims, just the knowledge you need to make informed decisions about Ayurvedic products.
-      </p>
-      <div className="card-list">
-        {guides.map(g => (
-          <Link key={g.slug} href={`/guides/${g.slug}`} className="card-list-item" style={{ display: "block", padding: "18px 24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 600, color: "var(--dark)" }}>{g.title}</div>
-            <div style={{ fontSize: 13, color: "var(--light-text)", marginTop: 4, fontWeight: 300 }}>{g.description}</div>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <SectionIndex
+      section="guides"
+      icon="📋"
+      label="Consumer Guides"
+      tagline="Practical knowledge for smarter product decisions"
+      description="No health claims, no medical advice — just the consumer intelligence you need to evaluate what you're buying."
+      color="#E65100"
+      bg="#FFF3E0"
+      countText="consumer guides published — practical knowledge with zero health claims"
+      articles={articles}
+    />
   );
 }

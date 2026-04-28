@@ -1,33 +1,29 @@
-import Link from "next/link";
 import { getReviewSlugs, getReviewContent } from "@/lib/content";
+import SectionIndex from "@/components/SectionIndex";
 
 export const metadata = {
   title: "Product Reviews",
-  description: "Label-by-label comparisons of Ayurvedic products in India. Factual specifications, no opinions — just the data you need to decide.",
+  description: "Label-by-label comparisons of Ayurvedic products in India. We buy the products, photograph the labels, and compare what's actually in them.",
 };
 
-export default function ReviewsIndex() {
+export default function ReviewsPage() {
   const slugs = getReviewSlugs();
-  const reviews = slugs.map(slug => {
+  const articles = slugs.map(slug => {
     const c = getReviewContent(slug);
-    return { slug, ...c.frontmatter };
+    return { slug, title: c.frontmatter.title, description: c.frontmatter.description, href: `/reviews/${slug}` };
   });
 
   return (
-    <div className="container" style={{ padding: "60px 40px" }}>
-      <div className="label label-green" style={{ marginBottom: 12 }}>Product Reviews</div>
-      <h1 style={{ fontSize: 40, fontWeight: 700, margin: "0 0 12px" }}>Brand & Product Reviews</h1>
-      <p style={{ fontSize: 17, color: "var(--medium)", maxWidth: 600, lineHeight: 1.7, fontWeight: 300, marginBottom: 48 }}>
-        Factual, label-based comparisons of Ayurvedic products available in India. No opinions — just specifications, certifications, and published evidence.
-      </p>
-      <div className="card-list">
-        {reviews.map(r => (
-          <Link key={r.slug} href={`/reviews/${r.slug}`} className="card-list-item" style={{ display: "block", padding: "18px 24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 600, color: "var(--dark)" }}>{r.title}</div>
-            <div style={{ fontSize: 13, color: "var(--light-text)", marginTop: 4, fontWeight: 300 }}>{r.description}</div>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <SectionIndex
+      section="reviews"
+      icon="🔬"
+      label="Product Reviews"
+      tagline="Label-based brand comparisons you can trust"
+      description="We buy the products, photograph the labels, and compare what's actually in them. No opinions — just specifications, certifications, and published evidence."
+      color="#1565C0"
+      bg="#E3F2FD"
+      countText="product reviews published — all based on physical products we purchased and photographed"
+      articles={articles}
+    />
   );
 }
