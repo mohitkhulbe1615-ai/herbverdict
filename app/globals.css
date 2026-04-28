@@ -484,6 +484,36 @@ h1, h2, h3 {
     text-align: center;
   }
 
+  /* Stats bar */
+  .stats-bar {
+    padding: 20px 16px !important;
+  }
+
+  .stats-bar > div {
+    gap: 32px !important;
+  }
+
+  /* Featured grid */
+  .featured-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Articles grid */
+  .articles-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Trust grid */
+  .trust-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section grid */
+  .section-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
   .newsletter-form {
     flex-direction: column;
   }

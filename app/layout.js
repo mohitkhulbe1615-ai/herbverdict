@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { WebsiteSchema } from "@/components/Schema";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Newsletter from "@/components/Newsletter";
 import { SITE } from "@/lib/constants";
 
 const GA_ID = "G-1V1LRBPM57";
@@ -66,6 +67,7 @@ export default function RootLayout({ children }) {
         <WebsiteSchema />
         <Navbar />
         <main>{children}</main>
+        <Newsletter variant="dark" />
         <Footer />
         <Analytics />
         <SpeedInsights />
