@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { herbs, getVerdictClass } from "@/lib/herbs";
-import { getHerbSlugs, getHerbContent } from "@/lib/content";
 
 export const metadata = {
   title: "Herb Evidence Library",
@@ -8,31 +7,19 @@ export const metadata = {
 };
 
 export default function HerbsIndex() {
-  // Get file-based herbs
-  const fileSlugs = getHerbSlugs();
-  const fileHerbs = fileSlugs.map(slug => {
-    const c = getHerbContent(slug);
-    return { slug, ...c.frontmatter };
-  });
+  const proven = herbs.filter(h => h.verdict === "PROVEN");
+  const promising = herbs.filter(h => h.verdict === "PROMISING");
+  const limited = herbs.filter(h => h.verdict === "LIMITED");
 
-  // Merge: prefer file data, fall back to lib/herbs.js data
-  const allHerbs = herbs.map(h => {
-    const fileVersion = fileHerbs.find(f => f.slug === h.slug);
-    return fileVersion ? { ...h, hasArticle: true } : { ...h, hasArticle: false };
-  });
-  // Add file herbs not in lib/herbs.js
-  fileHerbs.forEach(f => {
-    if (!herbs.find(h => h.slug === f.slug)) {
-      allHerbs.push({ ...f, hasArticle: true });
-    }
-  });
-
-  const proven = allHerbs.filter(h => h.verdict === "PROVEN");
-  const promising = allHerbs.filter(h => h.verdict === "PROMISING");
-  const limited = allHerbs.filter(h => h.verdict === "LIMITED");
+  const groups = [
+    { title: "Proven", desc: "Multiple quality RCTs confirm these effects.", items: proven, color: "var(--green-accent)", bg: "var(--green-light)" },
+    { title: "Promising", desc: "Some clinical evidence exists but more research is needed.", items: promising, color: "var(--orange)", bg: "#FFF3E0" },
+    { title: "Limited", desc: "Insufficient human clinical data available.", items: limited, color: "var(--gray-limited)", bg: "#F5F5F5" },
+  ].filter(g => g.items.length > 0);
 
   return (
     <div>
+      {/* Header */}
       <div className="container" style={{ paddingTop: 48, paddingBottom: 0 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
           <span style={{ fontSize: 32 }}>🌿</span>
@@ -52,22 +39,22 @@ export default function HerbsIndex() {
           display: "flex", alignItems: "center", gap: 16, padding: "12px 18px",
           background: "var(--green-light)", borderRadius: 8, border: "1px solid #2E7D3220",
         }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 22, fontWeight: 700, color: "var(--green-accent)" }}>{allHerbs.length}</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 22, fontWeight: 700, color: "var(--green-accent)" }}>{herbs.length}</span>
           <span style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--medium)" }}>herbs reviewed with clinical trial evidence — rated Proven, Promising, or Limited</span>
         </div>
       </div>
 
       {/* Verdict groups */}
       <div className="container" style={{ paddingTop: 12, paddingBottom: 60 }}>
-        {[
-          { title: "Proven", desc: "Multiple quality RCTs confirm these effects.", items: proven, color: "var(--green-accent)", bg: "var(--green-light)" },
-          { title: "Promising", desc: "Some clinical evidence exists but more research is needed.", items: promising, color: "var(--orange)", bg: "#FFF3E0" },
-          { title: "Limited", desc: "Insufficient human clinical data available.", items: limited, color: "var(--gray-limited)", bg: "#F5F5F5" },
-        ].filter(g => g.items.length > 0).map(group => (
+        {groups.map(group => (
           <section key={group.title} style={{ marginBottom: 36 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
               <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0 }}>{group.title}</h2>
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: 11, fontWeight: 700, color: group.color, background: group.bg, padding: "3px 12px", borderRadius: 20 }}>{group.items.length}</span>
+              <span style={{
+                fontFamily: "var(--font-sans)", fontSize: 11, fontWeight: 700,
+                color: group.color, background: group.bg,
+                padding: "3px 12px", borderRadius: 20,
+              }}>{group.items.length}</span>
             </div>
             <p style={{ fontSize: 13, color: "var(--light-text)", marginBottom: 16, fontWeight: 300 }}>{group.desc}</p>
             <div className="card-list">
@@ -99,7 +86,7 @@ export default function HerbsIndex() {
           <h2 style={{ fontSize: 22, fontWeight: 700, margin: "0 0 20px" }}>Explore other sections</h2>
           <div className="section-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
             {[
-              { label: "Herb Scorecards", count: "11 herbs", href: "/herbs", icon: "🌿", active: true },
+              { label: "Herb Scorecards", count: `${herbs.length} herbs`, href: "/herbs", icon: "🌿", active: true },
               { label: "Product Reviews", count: "5 reviews", href: "/reviews", icon: "🔬" },
               { label: "Consumer Guides", count: "6 guides", href: "/guides", icon: "📋" },
               { label: "Research News", count: "1 article", href: "/research", icon: "📰" },
