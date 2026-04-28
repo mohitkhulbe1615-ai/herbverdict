@@ -103,8 +103,8 @@ export default function Home() {
         </p>
 
         {/* ═══ BIG SEARCH BAR ═══ */}
-        <div style={{ position: "relative", maxWidth: 560, margin: "0 auto 20px" }}>
-          <div style={{
+        <div className="hero-search" style={{ position: "relative", maxWidth: 560, margin: "0 auto 20px" }}>
+          <div className="search-bar-inner" style={{
             display: "flex", alignItems: "center",
             background: "#fff", border: searchFocused ? "2px solid var(--green-accent)" : "2px solid var(--border)",
             borderRadius: 14, padding: "4px 6px 4px 18px",
@@ -125,11 +125,11 @@ export default function Home() {
                 border: "none", outline: "none", background: "transparent", color: "var(--dark)",
               }}
             />
-            <button className="btn-primary" style={{ padding: "10px 20px", borderRadius: 10, fontSize: 13, flexShrink: 0 }}>Search</button>
+            <button className="btn-primary" style={{ padding: "10px 20px", borderRadius: 10, fontSize: 13, flexShrink: 0, width: "auto" }}>Search</button>
           </div>
 
           {!search && !searchFocused && (
-            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 14, flexWrap: "wrap" }}>
+            <div className="popular-searches" style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 14, flexWrap: "wrap" }}>
               <span style={{ fontFamily: "var(--font-sans)", fontSize: 12, color: "#bbb" }}>Popular:</span>
               {POPULAR_SEARCHES.map(s => (
                 <button key={s} onClick={() => setSearch(s)} style={{

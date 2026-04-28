@@ -41,6 +41,7 @@ body {
   color: var(--dark);
   background: var(--bg-main);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -393,15 +394,17 @@ h1, h2, h3 {
 
   /* Hero */
   .hero-section {
-    padding: 48px 16px 40px !important;
+    padding: 36px 16px 24px !important;
   }
 
   .hero-title {
-    font-size: 32px !important;
+    font-size: 26px !important;
+    line-height: 1.2 !important;
   }
 
   .hero-subtitle {
-    font-size: 16px !important;
+    font-size: 14px !important;
+    margin-bottom: 24px !important;
   }
 
   .hero-buttons {
@@ -411,6 +414,49 @@ h1, h2, h3 {
 
   .hero-buttons a {
     text-align: center;
+  }
+
+  /* Search bar mobile */
+  .hero-search {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .hero-search .search-bar-inner {
+    padding: 3px 4px 3px 12px !important;
+    border-radius: 10px !important;
+  }
+
+  .hero-search .search-bar-inner input {
+    font-size: 13px !important;
+    padding: 10px 8px !important;
+  }
+
+  .hero-search .search-bar-inner button {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  .hero-search .search-bar-inner svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .popular-searches {
+    gap: 6px !important;
+    margin-top: 10px !important;
+  }
+
+  .popular-searches span,
+  .popular-searches button {
+    font-size: 11px !important;
+  }
+
+  /* Label text */
+  .label {
+    font-size: 10px !important;
   }
 
   /* Trust bar */
@@ -490,7 +536,8 @@ h1, h2, h3 {
   }
 
   .stats-bar > div {
-    gap: 32px !important;
+    gap: 20px !important;
+    justify-content: space-around !important;
   }
 
   /* Featured grid */
