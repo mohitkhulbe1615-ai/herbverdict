@@ -42,7 +42,7 @@ export default function Newsletter({ variant = "dark" }) {
             ✓ You're subscribed! Check your inbox.
           </p>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8, maxWidth: 440, margin: "0 auto" }}>
+          <form onSubmit={handleSubmit} className="newsletter-form" style={{ display: "flex", gap: 8, maxWidth: 440, margin: "0 auto" }}>
             <input
               type="email" placeholder="your@email.com" value={email}
               onChange={e => setEmail(e.target.value)} required
