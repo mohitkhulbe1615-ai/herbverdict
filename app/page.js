@@ -11,13 +11,25 @@ const HERBS = [
   { name: "Triphala", verdict: "PROMISING", studies: 6, slug: "triphala", tagline: "Gut health and antioxidant effects — more large trials needed", icon: "🫐" },
   { name: "Brahmi", verdict: "PROMISING", studies: 7, slug: "brahmi", tagline: "Memory and cognition gains in 12-week studies", icon: "🧠" },
   { name: "Shatavari", verdict: "PROMISING", studies: 4, slug: "shatavari", tagline: "Women's health — emerging but limited clinical evidence", icon: "🌸" },
+  { name: "Shilajit", verdict: "LIMITED", studies: 4, slug: "shilajit-evidence-scorecard", tagline: "Massive popularity, limited clinical trials — the gap is the story", icon: "🏔️" },
+  { name: "Giloy", verdict: "LIMITED", studies: 3, slug: "giloy", tagline: "Government promoted it during COVID — what does the evidence actually show?", icon: "🌱" },
+  { name: "Tulsi (Holy Basil)", verdict: "PROMISING", studies: 5, slug: "tulsi", tagline: "Documented compounds, adaptogenic potential — needs larger human trials", icon: "🌿" },
+  { name: "Neem", verdict: "PROMISING", studies: 4, slug: "neem", tagline: "Antimicrobial properties documented — limited large-scale human data", icon: "🍃" },
+  { name: "Amla", verdict: "PROMISING", studies: 5, slug: "amla", tagline: "Vitamin C powerhouse — antioxidant and lipid research emerging", icon: "🫒" },
 ];
 
 const ALL_ARTICLES = [
   { title: "Himalaya vs Patanjali Ashwagandha: Label-by-Label", section: "reviews", slug: "himalaya-vs-patanjali-ashwagandha", category: "Product Review", color: "#1565C0", bg: "#E3F2FD", desc: "Factual label comparison of India's two biggest Ayurveda brands" },
   { title: "Top Ashwagandha Brands in India Compared", section: "reviews", slug: "top-ashwagandha-brands-india", category: "Product Review", color: "#1565C0", bg: "#E3F2FD", desc: "8 brands, label-by-label — specs, certifications, and value math" },
+  { title: "Top Shilajit Brands in India Compared", section: "reviews", slug: "top-shilajit-brands-india", category: "Product Review", color: "#1565C0", bg: "#E3F2FD", desc: "6 Shilajit brands compared on fulvic acid %, heavy metal testing, and value" },
+  { title: "Dabur vs Baidyanath Chyawanprash", section: "reviews", slug: "dabur-vs-baidyanath-chyawanprash", category: "Product Review", color: "#1565C0", bg: "#E3F2FD", desc: "India's two biggest chyawanprash brands compared on ingredients and specs" },
+  { title: "Kapiva Shilajit Gold Review", section: "reviews", slug: "kapiva-shilajit-gold-review", category: "Product Review", color: "#1565C0", bg: "#E3F2FD", desc: "Full label analysis of India's bestselling Shilajit product" },
   { title: "Shilajit: How to Check If Yours Is Real", section: "guides", slug: "shilajit-real-vs-fake", category: "Consumer Guide", color: "#E65100", bg: "#FFF3E0", desc: "Home tests, label red flags, and the adulteration problem nobody talks about" },
   { title: "How to Read an Ayurvedic Product Label", section: "guides", slug: "how-to-read-ayurvedic-product-label", category: "Consumer Guide", color: "#E65100", bg: "#FFF3E0", desc: "FSSAI, extract types, withanolide percentages — what every label section means" },
+  { title: "Dabur Chyawanprash: What's Actually In It?", section: "guides", slug: "dabur-chyawanprash-ingredients", category: "Consumer Guide", color: "#E65100", bg: "#FFF3E0", desc: "Every ingredient analysed — what has evidence, what doesn't, and the sugar question" },
+  { title: "Shilajit: Gummies vs Capsules vs Resin", section: "guides", slug: "shilajit-gummies-vs-capsules-vs-resin", category: "Consumer Guide", color: "#E65100", bg: "#FFF3E0", desc: "Which form was actually tested in clinical trials? The answer might surprise you" },
+  { title: "Giloy Benefits and Side Effects", section: "guides", slug: "giloy-benefits-and-side-effects", category: "Consumer Guide", color: "#E65100", bg: "#FFF3E0", desc: "The full picture — what research supports, and the liver injury signal you need to know" },
+  { title: "Tulsi Types: Ram vs Krishna vs Vana", section: "guides", slug: "tulsi-types-ram-vs-krishna-vs-vana", category: "Consumer Guide", color: "#E65100", bg: "#FFF3E0", desc: "Three Tulsi varieties — do they have different compounds and evidence?" },
   { title: "What Is CCRAS and Why It Matters", section: "research", slug: "what-is-ccras", category: "Research News", color: "#6A1B9A", bg: "#F3E5F5", desc: "India's Ayurveda research body — who they are and what they've found" },
   { title: "Giloy During COVID: Science vs Claims", section: "myths", slug: "giloy-during-covid", category: "Myth Busting", color: "#C62828", bg: "#FFEBEE", desc: "Government promoted it as an immunity booster. What did the research actually show?" },
 ];
@@ -29,9 +41,9 @@ const FEATURED = [
 ];
 
 const STATS = [
-  { num: "75+", label: "Clinical trials reviewed" },
-  { num: "12", label: "In-depth articles" },
-  { num: "8", label: "Indian brands compared" },
+  { num: "150+", label: "Clinical trials reviewed" },
+  { num: "24", label: "In-depth articles" },
+  { num: "15+", label: "Indian brands compared" },
   { num: "0", label: "Brand affiliations" },
 ];
 
