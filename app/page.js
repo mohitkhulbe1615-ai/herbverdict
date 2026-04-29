@@ -42,7 +42,7 @@ const FEATURED = [
 
 const STATS = [
   { num: "150+", label: "Clinical trials reviewed" },
-  { num: "24", label: "In-depth articles" },
+  { num: "30", label: "In-depth articles" },
   { num: "15+", label: "Indian brands compared" },
   { num: "0", label: "Brand affiliations" },
 ];
