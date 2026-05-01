@@ -9,7 +9,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const content = getMythContent(params.slug);
   if (!content) return {};
-  return { title: content.frontmatter.title, description: content.frontmatter.description };
+  return { title: content.frontmatter.title, description: content.frontmatter.description, alternates: { canonical: `https://www.herbverdict.com/myths/${params.slug}` } };
 }
 
 export default function MythPage({ params }) {

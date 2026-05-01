@@ -13,10 +13,18 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const content = getHerbContent(params.slug);
-  if (content) return { title: content.frontmatter.title, description: content.frontmatter.description };
+  if (content) return {
+    title: content.frontmatter.title,
+    description: content.frontmatter.description,
+    alternates: { canonical: `https://www.herbverdict.com/herbs/${params.slug}` },
+  };
   const herb = getHerbBySlug(params.slug);
   if (!herb) return {};
-  return { title: `${herb.name} Evidence Scorecard`, description: herb.summary };
+  return {
+    title: `${herb.name} Evidence Scorecard`,
+    description: herb.summary,
+    alternates: { canonical: `https://www.herbverdict.com/herbs/${params.slug}` },
+  };
 }
 
 export default function HerbPage({ params }) {

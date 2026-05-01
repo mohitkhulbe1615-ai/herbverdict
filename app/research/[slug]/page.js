@@ -9,7 +9,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const content = getResearchContent(params.slug);
   if (!content) return {};
-  return { title: content.frontmatter.title, description: content.frontmatter.description };
+  return { title: content.frontmatter.title, description: content.frontmatter.description, alternates: { canonical: `https://www.herbverdict.com/research/${params.slug}` } };
 }
 
 export default function ResearchPage({ params }) {
