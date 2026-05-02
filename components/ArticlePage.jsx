@@ -1,5 +1,4 @@
 import { ArticleSchema } from "@/components/Schema";
-import Newsletter from "@/components/Newsletter";
 
 export default function ArticlePage({ content, section, slug }) {
   const fm = content.frontmatter;
@@ -27,7 +26,6 @@ export default function ArticlePage({ content, section, slug }) {
         style={{ padding: "24px 40px 0", maxWidth: 820, margin: "0 auto" }}
         dangerouslySetInnerHTML={{ __html: content.html }}
       />
-      <Newsletter variant="light" />
     </>
   );
 }

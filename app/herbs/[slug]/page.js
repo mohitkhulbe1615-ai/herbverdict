@@ -3,7 +3,6 @@ import { herbs, getHerbBySlug, getVerdictClass } from "@/lib/herbs";
 import { getHerbContent, getHerbSlugs } from "@/lib/content";
 import ArticlePage from "@/components/ArticlePage";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
-import Newsletter from "@/components/Newsletter";
 
 export function generateStaticParams() {
   const dataSlugs = herbs.map(h => ({ slug: h.slug }));
@@ -49,7 +48,6 @@ export default function HerbPage({ params }) {
           <p style={{ color: "var(--light-text)", fontStyle: "italic" }}>Full article coming soon.</p>
         </div>
       </article>
-      <Newsletter variant="light" />
     </>
   );
 }
