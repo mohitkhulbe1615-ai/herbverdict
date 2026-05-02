@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Fonts loaded via next/font in layout.js */
 
 :root {
   /* Colors */
@@ -20,10 +20,8 @@
   --white: #ffffff;
   --blue: #1565C0;
 
-  /* Fonts */
-  --font-serif: 'Source Serif 4', Georgia, serif;
-  --font-sans: 'DM Sans', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Fonts - CSS variables auto-created by next/font in layout.js:
+     --font-serif, --font-sans, --font-mono */
 }
 
 * {
@@ -37,7 +35,7 @@ html {
 }
 
 body {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif), Georgia, serif;
   color: var(--dark);
   background: var(--bg-main);
   -webkit-font-smoothing: antialiased;
