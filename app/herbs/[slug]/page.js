@@ -12,17 +12,27 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const content = getHerbContent(params.slug);
-  if (content) return {
-    title: content.frontmatter.title,
-    description: content.frontmatter.description,
-    alternates: { canonical: `https://www.herbverdict.com/herbs/${params.slug}` },
-  };
+  if (content) {
+    const t = content.frontmatter.title;
+    const d = content.frontmatter.description;
+    const url = `https://www.herbverdict.com/herbs/${params.slug}`;
+    return {
+      title: t, description: d,
+      alternates: { canonical: url },
+      openGraph: { title: t, description: d, url },
+      twitter: { title: t, description: d },
+    };
+  }
   const herb = getHerbBySlug(params.slug);
   if (!herb) return {};
+  const t = `${herb.name} Evidence Scorecard`;
+  const d = herb.summary;
+  const url = `https://www.herbverdict.com/herbs/${params.slug}`;
   return {
-    title: `${herb.name} Evidence Scorecard`,
-    description: herb.summary,
-    alternates: { canonical: `https://www.herbverdict.com/herbs/${params.slug}` },
+    title: t, description: d,
+    alternates: { canonical: url },
+    openGraph: { title: t, description: d, url },
+    twitter: { title: t, description: d },
   };
 }
 

@@ -9,10 +9,18 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const content = getReviewContent(params.slug);
   if (!content) return {};
-  return { title: content.frontmatter.title, description: content.frontmatter.description, alternates: { canonical: `https://www.herbverdict.com/reviews/${params.slug}` } };
+  const t = content.frontmatter.title;
+  const d = content.frontmatter.description;
+  const url = `https://www.herbverdict.com/reviews/${params.slug}`;
+  return {
+    title: t, description: d,
+    alternates: { canonical: url },
+    openGraph: { title: t, description: d, url },
+    twitter: { title: t, description: d },
+  };
 }
 
-export default function ReviewPage({ params }) {
+export default function Page({ params }) {
   const content = getReviewContent(params.slug);
   if (!content) notFound();
   return <ArticlePage content={content} section="reviews" slug={params.slug} />;

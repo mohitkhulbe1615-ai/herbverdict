@@ -1,4 +1,6 @@
 export const metadata = {
+  openGraph: { title: "Our Methodology", description: "How HerbVerdict evaluates Ayurvedic evidence. Our traffic-light verdict system, source criteria, and", url: "https://www.herbverdict.com/methodology" },
+  twitter: { title: "Our Methodology", description: "How HerbVerdict evaluates Ayurvedic evidence. Our traffic-light verdict system, source criteria, and" },
   title: "Our Methodology",
   description: "How HerbVerdict evaluates Ayurvedic evidence. Our traffic-light verdict system, source criteria, and editorial standards explained.",
 };

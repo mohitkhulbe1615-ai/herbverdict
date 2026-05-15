@@ -51,9 +51,10 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: SITE.name,
-    description: SITE.description,
-    url: SITE.url,
+    title: {
+      default: `${SITE.name} — Science-Backed Ayurveda Research`,
+      template: `%s | ${SITE.name}`,
+    },
     siteName: SITE.name,
     locale: "en_IN",
     type: "website",
