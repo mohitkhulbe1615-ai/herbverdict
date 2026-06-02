@@ -39,6 +39,7 @@ export const metadata = {
   },
   description: SITE.description,
   metadataBase: new URL(SITE.url),
+  alternates: { canonical: "/" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

@@ -2,6 +2,7 @@ import { getMythSlugs, getMythContent } from "@/lib/content";
 import SectionIndex from "@/components/SectionIndex";
 
 export const metadata = {
+  alternates: { canonical: "/myths" },
   title: "Myth Busting",
   description: "Popular Ayurveda claims investigated against published clinical evidence. What's proven, what's not, and what nobody tells you.",
 };

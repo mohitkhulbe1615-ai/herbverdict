@@ -2,6 +2,7 @@ import { getGuideSlugs, getGuideContent } from "@/lib/content";
 import SectionIndex from "@/components/SectionIndex";
 
 export const metadata = {
+  alternates: { canonical: "/guides" },
   title: "Consumer Guides",
   description: "Practical guides for Indian consumers — how to read labels, check product purity, and make informed supplement decisions.",
 };

@@ -1,4 +1,4 @@
-import { ArticleSchema } from "@/components/Schema";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/Schema";
 
 export default function ArticlePage({ content, section, slug }) {
   const fm = content.frontmatter;
@@ -12,6 +12,7 @@ export default function ArticlePage({ content, section, slug }) {
         slug={`${section}/${slug}`}
         type={fm.schemaType === "MedicalWebPage" ? "herb" : "article"}
       />
+      <BreadcrumbSchema section={section} slug={slug} title={fm.title} />
       {content.jsonLd && (
         <script
           type="application/ld+json"

@@ -33,6 +33,33 @@ export function ArticleSchema({ title, description, datePublished, dateModified,
   );
 }
 
+const SECTION_LABELS = {
+  herbs: "Herbs",
+  reviews: "Reviews",
+  guides: "Guides",
+  research: "Research",
+  myths: "Myths",
+};
+
+export function BreadcrumbSchema({ section, slug, title }) {
+  const sectionLabel = SECTION_LABELS[section] || section;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: sectionLabel, item: `${SITE.url}/${section}` },
+      { "@type": "ListItem", position: 3, name: title, item: `${SITE.url}/${section}/${slug}` },
+    ],
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function WebsiteSchema() {
   const schema = {
     "@context": "https://schema.org",

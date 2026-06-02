@@ -13,8 +13,8 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const content = getHerbContent(params.slug);
   if (content) {
-    const t = content.frontmatter.title;
-    const d = content.frontmatter.description;
+    const t = content.frontmatter.seoTitle || content.frontmatter.title;
+    const d = content.frontmatter.metaDescription || content.frontmatter.description;
     const url = `https://www.herbverdict.com/herbs/${params.slug}`;
     return {
       title: t, description: d,

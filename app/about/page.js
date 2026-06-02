@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/about" },
   openGraph: { title: "About HerbVerdict", description: "Who we are, why we exist, and how we evaluate Ayurvedic evidence. Independent, science-first, no bra", url: "https://www.herbverdict.com/about" },
   twitter: { title: "About HerbVerdict", description: "Who we are, why we exist, and how we evaluate Ayurvedic evidence. Independent, science-first, no bra" },
   title: "About HerbVerdict",

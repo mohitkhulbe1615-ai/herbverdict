@@ -1,6 +1,7 @@
 import { DISCLAIMER_FULL } from "@/lib/constants";
 
 export const metadata = {
+  alternates: { canonical: "/disclaimer" },
   openGraph: { title: "Medical Disclaimer", description: "HerbVerdict medical and legal disclaimer. This website does not provide medical advice.", url: "https://www.herbverdict.com/disclaimer" },
   twitter: { title: "Medical Disclaimer", description: "HerbVerdict medical and legal disclaimer. This website does not provide medical advice." },
   title: "Medical Disclaimer",

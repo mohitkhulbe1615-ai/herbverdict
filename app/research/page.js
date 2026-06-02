@@ -2,6 +2,7 @@ import { getResearchSlugs, getResearchContent } from "@/lib/content";
 import SectionIndex from "@/components/SectionIndex";
 
 export const metadata = {
+  alternates: { canonical: "/research" },
   title: "Research News",
   description: "Ayurveda research news — CCRAS trials, AYUSH policy, WHO traditional medicine updates explained in plain English.",
 };

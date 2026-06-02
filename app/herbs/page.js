@@ -2,6 +2,7 @@ import Link from "next/link";
 import { herbs, getVerdictClass } from "@/lib/herbs";
 
 export const metadata = {
+  alternates: { canonical: "/herbs" },
   title: "Herb Evidence Library",
   description: "Evidence scorecards for every major Ayurvedic herb. Each rated Proven, Promising, or Limited based on published clinical trials.",
 };

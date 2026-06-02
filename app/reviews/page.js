@@ -2,6 +2,7 @@ import { getReviewSlugs, getReviewContent } from "@/lib/content";
 import SectionIndex from "@/components/SectionIndex";
 
 export const metadata = {
+  alternates: { canonical: "/reviews" },
   title: "Product Reviews",
   description: "Label-by-label comparisons of Ayurvedic products in India. We buy the products, photograph the labels, and compare what's actually in them.",
 };
