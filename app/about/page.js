@@ -39,11 +39,12 @@ export default function AboutPage() {
 
         <h2>Who runs this?</h2>
         <p>
-          {/* REPLACE WITH YOUR REAL BIO */}
-          HerbVerdict is founded and edited by Ash, a research editor based in India. Ash
-          is not a medical professional — and that's stated clearly on every page. The publication's credibility
-          comes from its methodology, not from credentials: every claim is linked to its source, every study
-          summary includes limitations, and every verdict is justified with specific evidence.
+          HerbVerdict is founded and edited by <a href="/authors/ash">Ash, a research editor based in
+          India</a>. Ash is not a medical professional — and that&apos;s stated clearly on every page. The
+          publication&apos;s credibility comes from its methodology, not from credentials: every claim is
+          linked to its source, every study summary includes limitations, and every verdict is justified
+          with specific evidence. You can read more about our standards in the{" "}
+          <a href="/editorial-policy">editorial policy</a>.
         </p>
 
         <h2>Our editorial principles</h2>

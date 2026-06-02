@@ -54,6 +54,8 @@ export default function Footer() {
             <FooterCol title="About" links={[
               { label: "About Us", href: "/about" },
               { label: "Methodology", href: "/methodology" },
+              { label: "Editorial Policy", href: "/editorial-policy" },
+              { label: "Author: Ash", href: "/authors/ash" },
               { label: "Disclaimer", href: "/disclaimer" },
             ]} />
           </div>

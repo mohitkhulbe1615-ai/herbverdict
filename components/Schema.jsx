@@ -13,11 +13,15 @@ export function ArticleSchema({ title, description, datePublished, dateModified,
       "@type": "Organization",
       name: SITE.name,
       url: SITE.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE.url}/android-chrome-512x512.png`,
+      },
     },
     author: {
       "@type": "Person",
       name: SITE.author,
-      url: `${SITE.url}/about`,
+      url: `${SITE.url}/authors/ash`,
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -61,23 +65,52 @@ export function BreadcrumbSchema({ section, slug, title }) {
 }
 
 export function WebsiteSchema() {
-  const schema = {
+  const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE.name,
     url: SITE.url,
     description: SITE.description,
-    publisher: {
-      "@type": "Organization",
-      name: SITE.name,
-      url: SITE.url,
+    publisher: { "@id": `${SITE.url}/#organization` },
+  };
+
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE.url}/#organization`,
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE.url}/android-chrome-512x512.png`,
+      width: 512,
+      height: 512,
     },
+    founder: {
+      "@type": "Person",
+      name: "Ash",
+      url: `${SITE.url}/authors/ash`,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "ash@herbverdict.com",
+      contactType: "editorial",
+    },
+    // TODO: add profile URLs here once social/entity accounts exist, e.g.
+    // sameAs: ["https://twitter.com/herbverdict", "https://www.instagram.com/herbverdict"],
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+      />
+    </>
   );
 }
