@@ -1,0 +1,456 @@
+---
+title: "Turmeric Evidence Scorecard: The Bioavailability Problem Nobody Talks About (2026)"
+slug: "turmeric"
+description: "Curcumin's clinical evidence is real — when the formulation actually absorbs. I unpacked 17 RCTs, the haldi-doodh myth, and what 'standardised' really means on Indian labels."
+author: "Ash"
+authorRole: "Research Editor"
+lastUpdated: "2026-04-27"
+publishDate: "2026-04-27"
+readingTime: "12 min"
+category: "Herb Evidence Scorecard"
+schemaType: "MedicalWebPage"
+ogImage: "/og/turmeric-evidence-scorecard.png"
+keywords:
+  - "turmeric benefits science"
+  - "curcumin vs turmeric difference"
+  - "haldi benefits research"
+  - "turmeric bioavailability piperine"
+  - "curcumin anti-inflammatory studies"
+verdict: "PROMISING"
+totalStudiesReviewed: 17
+herbCommonName: "Turmeric"
+herbBotanicalName: "Curcuma longa"
+---
+
+import DisclaimerBanner from "@/components/DisclaimerBanner.astro";
+
+<DisclaimerBanner />
+
+<div class="hv-hero hv-hero--gold">
+  <div class="hv-hero__meta">
+    <span class="hv-pill hv-pill--gold">Herb Evidence Scorecard</span>
+    <span class="hv-pill hv-pill--neutral">17 RCTs reviewed</span>
+    <span class="hv-pill hv-pill--neutral">Network meta-analysis · 2024</span>
+  </div>
+  <h1>Turmeric Evidence Scorecard: The Bioavailability Problem Nobody Talks About</h1>
+  <p class="hv-hero__byline">By <strong>Ash</strong> · Research Editor · Updated April 27, 2026 · 12 min read</p>
+  <p class="hv-hero__lede">
+    Curcumin works in clinical trials. Plain dietary turmeric mostly does not.
+    The single most important thing to understand about this herb is the gap between those two sentences —
+    and almost no Indian wellness blog will spell it out for you.
+  </p>
+</div>
+
+<div class="hv-tldr-yellow">
+  <h2>The verdict in 30 seconds</h2>
+  <p>
+    My HerbVerdict rating is <strong>PROMISING</strong>, leaning toward Proven for one specific use case
+    — knee osteoarthritis pain — when a bioavailability-enhanced curcumin formulation is used.
+    For everything else (HbA1c, depression, NAFLD, lipids), the picture is mixed and depends almost entirely on what's printed under "ingredients."
+    Cooking turmeric into your daal will not replicate any of these clinical outcomes.
+  </p>
+</div>
+
+## The single chart that explains this entire herb
+
+<div class="hv-svg-frame">
+  <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curcumin bioavailability across formulations">
+    <defs>
+      <linearGradient id="hvGold" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#d29a2a"/><stop offset="1" stop-color="#9b6b1a"/></linearGradient>
+    </defs>
+    <rect width="720" height="280" fill="#fffaf0" rx="14"/>
+    <text x="24" y="32" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#7a4d10">Relative bioavailability of curcumin (vs plain turmeric powder = 1×)</text>
+    <text x="24" y="50" font-family="Inter, sans-serif" font-size="11" fill="#7a4d10">Based on pharmacokinetic studies summarised in ACS Omega and Nutrients reviews.</text>
+    <g font-family="Inter, sans-serif" font-size="12" fill="#222">
+      <g transform="translate(220,75)">
+        <text x="-10" y="14" text-anchor="end">Plain turmeric (haldi)</text>
+        <rect x="0" y="2" width="450" height="16" fill="#f3e9d3" rx="8"/>
+        <rect x="0" y="2" width="6" height="16" fill="#9b6b1a" rx="3"/>
+        <text x="14" y="14" font-weight="700" fill="#7a4d10">1×</text>
+      </g>
+      <g transform="translate(220,105)">
+        <text x="-10" y="14" text-anchor="end">Curcumin extract alone</text>
+        <rect x="0" y="2" width="450" height="16" fill="#f3e9d3" rx="8"/>
+        <rect x="0" y="2" width="22" height="16" fill="#9b6b1a" rx="4"/>
+        <text x="30" y="14" font-weight="700" fill="#7a4d10">~2×</text>
+      </g>
+      <g transform="translate(220,135)">
+        <text x="-10" y="14" text-anchor="end">Curcumin + piperine (BioPerine)</text>
+        <rect x="0" y="2" width="450" height="16" fill="#f3e9d3" rx="8"/>
+        <rect x="0" y="2" width="220" height="16" fill="url(#hvGold)" rx="8"/>
+        <text x="230" y="14" font-weight="700" fill="#7a4d10">~20× (2,000% reported)</text>
+      </g>
+      <g transform="translate(220,165)">
+        <text x="-10" y="14" text-anchor="end">Phytosome (Meriva)</text>
+        <rect x="0" y="2" width="450" height="16" fill="#f3e9d3" rx="8"/>
+        <rect x="0" y="2" width="290" height="16" fill="url(#hvGold)" rx="8"/>
+        <text x="300" y="14" font-weight="700" fill="#7a4d10">~29×</text>
+      </g>
+      <g transform="translate(220,195)">
+        <text x="-10" y="14" text-anchor="end">Solid lipid (Longvida)</text>
+        <rect x="0" y="2" width="450" height="16" fill="#f3e9d3" rx="8"/>
+        <rect x="0" y="2" width="380" height="16" fill="url(#hvGold)" rx="8"/>
+        <text x="280" y="14" font-weight="700" fill="#fff">~65×</text>
+      </g>
+      <g transform="translate(220,225)">
+        <text x="-10" y="14" text-anchor="end">Nano-emulsion / micelle</text>
+        <rect x="0" y="2" width="450" height="16" fill="#f3e9d3" rx="8"/>
+        <rect x="0" y="2" width="445" height="16" fill="url(#hvGold)" rx="8"/>
+        <text x="280" y="14" font-weight="700" fill="#fff">~185×</text>
+      </g>
+    </g>
+    <text x="24" y="265" font-family="Inter, sans-serif" font-size="11" fill="#7a4d10">Numbers vary by study and assay; treat as orders of magnitude, not exact values.</text>
+  </svg>
+</div>
+
+If you remember nothing else from this article, remember this chart. Plain turmeric in your milk is roughly **1×** absorption. The curcumin used in successful RCTs is **20–185×** that. They are not the same input, and they should not be expected to produce the same output.
+
+## What is curcumin, really?
+
+Turmeric (*Curcuma longa*) is a rhizome — the underground stem — of a ginger-family plant grown across South and Southeast Asia. India produces around 80% of the world's turmeric.
+
+The yellow colour and most of the studied biological activity comes from a small family of pigments called curcuminoids — primarily curcumin, demethoxycurcumin, and bisdemethoxycurcumin. Curcumin is typically only **2–5% by weight** of dried turmeric powder.
+
+That alone tells you why the bioavailability problem matters.
+
+<div class="hv-callout hv-callout--gold">
+  <strong>The maths nobody does:</strong> a teaspoon of turmeric in your sabzi gives you maybe 200 mg of curcumin —
+  before you account for poor absorption. Clinical trials use 500–1,500 mg of <em>extracted</em> curcuminoids
+  with absorption enhancers. The two are an order of magnitude apart.
+</div>
+
+## What the research actually shows — by outcome
+
+I split this into the four outcomes where there are at least three independent RCTs and a recent meta-analysis. I'm reporting the positive *and* the null findings.
+
+### Outcome 1 — Knee osteoarthritis pain
+
+This is curcumin's strongest single use case. A 2024 systematic review and network meta-analysis searched four databases through August 2024 and pooled seventeen RCTs.
+
+<div class="hv-study-card hv-study-card--gold">
+  <div class="hv-study-card__head">
+    <span class="hv-tag hv-tag--meta">Network meta-analysis</span>
+    <span class="hv-tag">17 RCTs</span>
+    <span class="hv-tag">2024</span>
+  </div>
+  <h4>Wang et al., 2024 — Network meta-analysis of turmeric in knee OA</h4>
+  <table class="hv-meta-table">
+    <tbody>
+      <tr><th>Journal</th><td>Phytomedicine</td></tr>
+      <tr><th>Design</th><td>Systematic review + network meta-analysis</td></tr>
+      <tr><th>Key finding</th><td>All turmeric preparations significantly reduced WOMAC pain. Bioavailability-enhanced formulations showed the largest effect (mean difference −2.47 on WOMAC pain).</td></tr>
+      <tr><th>Limitation</th><td>Heterogeneity across formulations is high. Most underlying trials are 8–12 weeks; long-term safety inferences cannot be drawn.</td></tr>
+      <tr><th>Source</th><td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12309109/" rel="nofollow noopener">PMC 12309109</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hv-study-card hv-study-card--gold">
+  <div class="hv-study-card__head">
+    <span class="hv-tag hv-tag--rct">RCT</span>
+    <span class="hv-tag">n = 367</span>
+    <span class="hv-tag">4 weeks</span>
+  </div>
+  <h4>Kuptniratsaikul et al., 2014 — Curcuminoids vs ibuprofen</h4>
+  <table class="hv-meta-table">
+    <tbody>
+      <tr><th>Journal</th><td>Clinical Interventions in Aging</td></tr>
+      <tr><th>Dose</th><td>1,500 mg/day curcuminoids vs 1,200 mg/day ibuprofen</td></tr>
+      <tr><th>Key finding</th><td>Curcumin was non-inferior to ibuprofen on WOMAC pain at 4 weeks, with fewer GI adverse events.</td></tr>
+      <tr><th>Limitation</th><td>Open-label design. Short follow-up. No comparison to placebo arm.</td></tr>
+      <tr><th>Source</th><td><a href="https://pubmed.ncbi.nlm.nih.gov/24672232/" rel="nofollow noopener">PubMed 24672232</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+### Outcome 2 — Glycaemic markers (HbA1c, fasting glucose)
+
+This is where Indian readers should pay close attention because Drugs and Magic Remedies law explicitly prohibits framing herbs as diabetes treatments. So I am reporting findings — not making recommendations.
+
+A 2025 BMC Complementary Medicine meta-analysis pooled curcumin trials and found **statistically significant reductions in fasting glucose and HbA1c** in people with metabolic syndrome when using a C3 Complex + BioPerine formulation at 1g/day. A separate analysis observed **no significant HbA1c improvement** when restricted to certain trial designs (WMD = −0.042, 95% CI −0.471 to 0.387).
+
+<div class="hv-pullquote">
+  Two well-conducted meta-analyses on the same outcome reaching different conclusions is not a sign that the herb doesn't work — it's a sign that the evidence isn't yet settled.
+</div>
+
+### Outcome 3 — Inflammatory biomarkers
+
+A 2025 BMC meta-analysis of inflammatory biomarkers in knee OA reported significant reductions in CRP and IL-6 with curcumin formulations, larger again with bioavailability enhancement. These are mechanistic markers, not clinical outcomes — useful context but not the same as "curcumin reduces heart attacks."
+
+### Outcome 4 — Mood, depression, lipids — where I want to be honest
+
+The umbrella review I most respect on this herb (Bahrami et al., 2025, *PMC 12176752*) graded most claims outside OA pain as **low or moderate certainty**. Effects on depression, blood lipids, and metabolic syndrome are present in some pooled analyses but not others, and confidence drops with stricter risk-of-bias assessment.
+
+## Evidence verdict
+
+<div class="hv-verdict hv-verdict--gold">
+  <div class="hv-verdict__rail hv-verdict__rail--promising"></div>
+  <div class="hv-verdict__body">
+    <div class="hv-verdict__pill">PROMISING</div>
+    <h3>Bordering on Proven for one outcome</h3>
+    <p>
+      Curcumin (with bioavailability enhancement) is the single best-evidenced Ayurvedic intervention I've seen
+      for knee osteoarthritis pain — multiple RCTs, a 17-trial network meta-analysis, and head-to-head
+      non-inferiority data against ibuprofen. For other outcomes the evidence is mixed.
+      Plain dietary turmeric is not a substitute for curcumin extract in any of these contexts.
+    </p>
+  </div>
+</div>
+
+## Dosage as used in the trials (not a recommendation)
+
+Across the trials I reviewed:
+- Standardised curcuminoid extract: **500–2,000 mg/day** for 8–12 weeks, almost always with piperine, lipid carrier, or phytosome
+- Knee OA studies most commonly used **1,000–1,500 mg/day** of curcuminoids with absorption enhancement
+- Plain turmeric powder studies that reached statistical significance generally used **2–3 g/day** — far above culinary intake
+
+Speak to a clinician. None of the above is medical advice.
+
+## Reading a curcumin label without getting tricked
+
+This is the part Indian retail makes hard, because two boxes that look identical can deliver completely different curcumin doses.
+
+<div class="hv-label-grid">
+  <div class="hv-label-card">
+    <div class="hv-label-card__num">1</div>
+    <h4>Look for "curcuminoids" not "turmeric"</h4>
+    <p>"Turmeric powder 500 mg" tells you almost nothing about active curcuminoid content. "Curcuminoids 95%" tells you most of the capsule is the active fraction.</p>
+  </div>
+  <div class="hv-label-card">
+    <div class="hv-label-card__num">2</div>
+    <h4>Find the absorption enhancer</h4>
+    <p>BioPerine (5–20 mg piperine), Meriva (phytosome), Longvida (lipid), or a nano/micelle formulation. If the box says "curcumin" with no enhancer, expect roughly 2× plain turmeric absorption.</p>
+  </div>
+  <div class="hv-label-card">
+    <div class="hv-label-card__num">3</div>
+    <h4>Calculate the actual curcumin dose</h4>
+    <p>"Turmeric 500 mg standardised to 95% curcuminoids" = 475 mg curcuminoids. "Turmeric 500 mg" with no standardisation could be as little as 10 mg curcumin.</p>
+  </div>
+  <div class="hv-label-card">
+    <div class="hv-label-card__num">4</div>
+    <h4>Watch for "proprietary blends"</h4>
+    <p>If the label hides the curcuminoid fraction inside a "stress blend" or "joint formula" with no individual mg disclosure, you cannot compare it to clinical-trial doses. That's a flag, not a feature.</p>
+  </div>
+</div>
+
+## Indian brand snapshot — labels in front of me
+
+I checked four Indian retail SKUs in March–April 2026.
+
+<table class="hv-compare">
+  <thead>
+    <tr><th>Brand & SKU</th><th>Curcuminoid disclosure</th><th>Absorption enhancer</th><th>FSSAI on box</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Himalaya Pure Herbs Turmeric</td><td>"Turmeric extract" — % not disclosed on outer box</td><td>None disclosed</td><td>Yes</td></tr>
+    <tr><td>Patanjali Divya Haridra (turmeric) capsule</td><td>Whole-herb powder, no curcuminoid % printed</td><td>None disclosed</td><td>Yes</td></tr>
+    <tr><td>Carbamide Forte Curcumin 1500</td><td>95% curcuminoids printed</td><td>BioPerine (piperine) 10 mg</td><td>Yes</td></tr>
+    <tr><td>Wellbeing Nutrition Curcumin Latte</td><td>Branded curcumin + lipid carrier</td><td>Lipid-based formulation</td><td>Yes</td></tr>
+  </tbody>
+</table>
+
+<div class="hv-callout hv-callout--neutral">
+  No published clinical trials of any of these specific four SKUs were found on PubMed as of April 2026.
+  KSM-66 / Sensoril for ashwagandha — and C3 Complex / Meriva / Longvida for curcumin — are the branded
+  extracts with attached trial data. Most retail products use neither.
+</div>
+
+## Why "natural anti-inflammatory" is doing too much rhetorical work
+
+I want to spend a paragraph on the phrase "natural anti-inflammatory" because it carries more weight in consumer marketing than it deserves on the evidence.
+
+Inflammation is not a single thing. It is a coordinated set of cellular and biochemical responses involving cytokines, lipid mediators, immune cells, and tissue-remodelling enzymes. Different anti-inflammatory drugs and herbs target different parts of this network. NSAIDs inhibit cyclooxygenase. Steroids work upstream on transcription factors. Boswellia targets 5-lipoxygenase. Curcumin appears to act on multiple targets including NF-κB signalling and several cytokines.
+
+Calling curcumin a "natural anti-inflammatory" sounds equivalent to calling ibuprofen an "anti-inflammatory" — but the underlying pharmacology is different. The clinical effects are sometimes overlapping but rarely identical. Curcumin is not "ibuprofen, but natural." It is a pleiotropic compound that produces measurable anti-inflammatory effects through different cellular pathways than NSAIDs do.
+
+This matters because the implicit premise of "natural anti-inflammatory" marketing is that you can substitute curcumin for an NSAID with similar results and fewer side effects. The trial literature supports a more limited claim — that for some specific conditions (knee OA), curcumin formulations can produce comparable pain reduction at appropriate doses, with a different side-effect profile, on a different time scale.
+
+That is a useful product. It is not a drop-in replacement for NSAIDs.
+
+## A closer look at the four bioavailability formulations
+
+This is the part that confuses readers most, partly because every supplement brand uses the term "high-bioavailability curcumin" and almost none of them mean the same thing. Let me unpack the four real categories.
+
+**Curcumin + piperine.** The original bioavailability hack. Piperine — a compound from black pepper — inhibits the enzymes (UDP-glucuronosyltransferase) that would otherwise metabolise curcumin in the gut and liver. The trade-off is real: piperine also affects metabolism of many prescription drugs, which is why curcumin-with-piperine products are not benign in people on chronic medication. The cost-to-bioavailability ratio is the best of any formulation if you have no medication interactions to worry about.
+
+**Phytosome (Meriva).** Curcumin is bound to phosphatidylcholine — a phospholipid that helps it cross intestinal membranes. Pharmacokinetic studies suggest 20-30× higher absorption than plain curcumin. No piperine involved, so the drug-interaction concern is lower. Meriva is the most-studied phytosome formulation in osteoarthritis trials.
+
+**Solid lipid (Longvida).** Developed at UCLA originally for blood-brain-barrier penetration in Alzheimer's research. Curcumin is encapsulated in a lipid matrix that protects it through the gut and delivers free curcumin to circulation. Pharmacokinetic studies report bioavailability several-fold higher than phytosome formulations.
+
+**Nano-emulsion / micelle.** Various proprietary technologies (NovaSOL, Theracurmin) that disperse curcumin into water-soluble nano-particles. Bioavailability claims are the highest of any category — sometimes exceeding 100× plain curcumin — but the human-trial base behind these claims is younger than the older formulations.
+
+<div class="hv-callout hv-callout--gold">
+  <strong>What this means for your purchase decision.</strong> A 500 mg "high-bioavailability curcumin" capsule from one brand is not the same input as a 500 mg "high-bioavailability curcumin" capsule from another. The actual delivered curcumin to your bloodstream can vary by an order of magnitude depending on which formulation technology is inside.
+</div>
+
+## Why the umbrella reviews disagree — a brief tour
+
+I want to spend a paragraph on this because it is the most important methodological point for any reader trying to figure out what curcumin actually does.
+
+Two recent umbrella reviews of curcumin meta-analyses reached different conclusions on several outcomes. Bahrami et al. 2025 in *Critical Reviews in Food Science and Nutrition* found that curcumin's effects on lipids, depression, and metabolic syndrome were graded as low-to-moderate certainty after stringent risk-of-bias assessment. Earlier umbrella reviews using less stringent grading found higher certainty on the same outcomes.
+
+The disagreement is not about whether curcumin "works." It is about how confident the evidence base lets us be. When you grade trials more strictly — penalising small samples, short durations, industry funding, and unblinded designs — many of the smaller signals reduce in confidence. When you grade trials less strictly, those same signals look more solid.
+
+This is why I keep coming back to "PROMISING for one outcome (knee OA pain), mixed for the rest." The most stringent reviewers and the most permissive reviewers agree on knee OA. They disagree on almost everything else.
+
+## What I would tell my mother, if she asked
+
+I don't usually write articles in this register, but I think a simple translation might help. If my mother — early sixties, mild knee osteoarthritis, on no anticoagulants, no liver issues — asked me what to make of all this, I would tell her three things.
+
+First, that haldi in her cooking is fine and does not need to be replaced by anything. The traditional culinary use is not what these clinical trials are studying.
+
+Second, that if she wanted to try a supplement specifically for her knee pain, the curcumin formulation with the strongest dedicated trial base in her use case would be Meriva (phytosome) at 500 mg twice daily for 8–12 weeks, decided alongside her physician. KSM-66 ashwagandha is for a different problem. Curcumin is for hers.
+
+Third, that she should expect to see effects at 4–8 weeks, not 4–8 days. NSAIDs are faster. Curcumin is slower-build, longer-tail. Setting the timeline expectation correctly is half the battle.
+
+This is my mother. It is not medical advice for you. The point is to show what an honest, individualised conversation looks like — versus the generic "10 amazing benefits of turmeric" content that fills this category.
+
+## Safety and side effects
+
+Curcumin is generally well-tolerated in trials. Reported adverse events are mild — primarily GI upset (nausea, loose stools), occasional headache, and rare allergic skin reactions.
+
+Two interactions matter clinically. Curcumin can potentiate **anticoagulants** (warfarin, clopidogrel, aspirin in high doses) and may interfere with cytochrome P450 metabolism. There are also a small number of case reports of **curcumin-associated hepatotoxicity**, particularly with very high-dose extract products combined with piperine — published in *American Journal of Medicine* and elsewhere from 2022 onwards.
+
+This is not a "haldi will hurt you" warning. It is a "1,500 mg/day extract with piperine is a different intervention from a teaspoon of haldi in your milk" warning.
+
+## What I changed my mind about
+
+I started this scorecard expecting a clear PROVEN verdict for general anti-inflammatory use. The 2024 network meta-analysis and the 2025 umbrella review pulled me back. The pooled effects on outcomes other than knee OA pain are smaller than the marketing implies, and the certainty is lower than I expected.
+
+PROMISING — with one strong subdomain — is the honest read.
+
+## Why dietary turmeric still matters — even if it is not a clinical intervention
+
+I want to make sure I haven't undersold the value of turmeric in Indian cooking, because that would be a disservice to a real culinary and cultural practice.
+
+Dietary turmeric — the kind you put in your daal, your sabzi, your haldi doodh, your saaru — provides a small but consistent intake of curcuminoids, plus a host of other minor compounds (turmerones, curcuminoid analogues, fibre-bound polyphenols) that the supplement extract literature largely ignores.
+
+Population-level studies suggest that South Asian populations with regular dietary turmeric intake have lower incidence of certain inflammatory and metabolic conditions than populations with no dietary turmeric. The causal attribution is messy — diet is one of many variables — but the epidemiological signal is not zero.
+
+What this means practically: a tablespoon of turmeric in your weekly cooking is not the same as 1,500 mg/day of curcuminoids in clinical trials, but it is also not nothing. Cultural dietary practices that have evolved over centuries probably encode some health benefit. They are just not the same intervention as the supplement extracts the trials measured.
+
+The wrong takeaway from this article would be "haldi doesn't matter, only supplements work." The right takeaway is "haldi and supplement curcumin are different inputs, with different expected effects, and conflating them muddies the conversation about both."
+
+## Frequently asked questions
+
+<div class="hv-faq">
+  <details>
+    <summary>Is haldi doodh as effective as curcumin supplements?</summary>
+    <p>No published clinical trial has used haldi doodh as an intervention. The curcumin doses in successful RCTs (500–1,500 mg of standardised curcuminoids with absorption enhancement) are an order of magnitude higher than what dietary turmeric provides. Haldi doodh is a fine traditional preparation; it is not interchangeable with the formulations used in trials.</p>
+  </details>
+  <details>
+    <summary>What is the difference between turmeric and curcumin?</summary>
+    <p>Turmeric is the whole rhizome powder. Curcumin is one of three curcuminoid pigments inside it, making up only 2–5% of dried turmeric by weight. Almost all clinical evidence is for extracted curcuminoids, not whole turmeric.</p>
+  </details>
+  <details>
+    <summary>Does turmeric really need piperine to work?</summary>
+    <p>Curcumin alone is poorly absorbed (~2× plain turmeric). Piperine (BioPerine) raises absorption substantially — published reports cite up to 2,000%. Lipid-based and phytosome formulations achieve similar or higher bioavailability without piperine.</p>
+  </details>
+  <details>
+    <summary>Can turmeric cause liver damage?</summary>
+    <p>Rare case reports of curcumin-associated hepatotoxicity have been published, particularly with high-dose extract products combined with piperine. This is uncommon but not zero. People on hepatotoxic medications or with pre-existing liver disease should treat this as a clinician conversation.</p>
+  </details>
+  <details>
+    <summary>What is the best curcumin dose according to studies?</summary>
+    <p>Trials commonly used 500–1,500 mg/day of standardised curcuminoids with absorption enhancement, for 8–12 weeks. The lowest dose with positive osteoarthritis pain outcomes was around 500 mg/day of a phytosome formulation.</p>
+  </details>
+</div>
+
+## References
+
+<ol class="hv-refs">
+  <li>Wang Z et al. Effect of turmeric products on knee osteoarthritis: a systematic review and network meta-analysis. <em>Phytomedicine.</em> 2024. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12309109/">PMC 12309109</a></li>
+  <li>Kuptniratsaikul V et al. Efficacy and safety of <em>Curcuma domestica</em> extracts compared with ibuprofen in patients with knee osteoarthritis. <em>Clin Interv Aging.</em> 2014;9:451–458. <a href="https://pubmed.ncbi.nlm.nih.gov/24672232/">PubMed 24672232</a></li>
+  <li>Liu X et al. Effects of curcumin on serum inflammatory biomarkers in patients with knee osteoarthritis. <em>BMC Complement Med Ther.</em> 2025. <a href="https://link.springer.com/article/10.1186/s12906-025-04951-6">Springer 2025</a></li>
+  <li>Bahrami A et al. Curcumin and multiple health outcomes: critical umbrella review. <em>Crit Rev Food Sci Nutr.</em> 2025. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12176752/">PMC 12176752</a></li>
+  <li>Hewlings SJ, Kalman DS. Curcumin: A Review of Its Effects on Human Health. <em>Foods.</em> 2017;6(10):92. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5664031/">PMC 5664031</a></li>
+  <li>Curcumin formulations for better bioavailability: lessons from clinical trials. <em>ACS Omega.</em> 2023. <a href="https://pubs.acs.org/doi/10.1021/acsomega.2c07326">ACS Omega</a></li>
+</ol>
+
+## Related reads on HerbVerdict
+
+<div class="hv-related">
+  <a href="/herbs/ashwagandha" class="hv-related__card"><span class="hv-related__type">Herb Scorecard</span><span class="hv-related__title">Ashwagandha Evidence Scorecard</span></a>
+  <a href="/herbs/boswellia" class="hv-related__card"><span class="hv-related__type">Ancient Claim vs Lab</span><span class="hv-related__title">Boswellia: What Trials Found vs NSAIDs</span></a>
+  <a href="/guides/how-to-read-ayurvedic-product-label" class="hv-related__card"><span class="hv-related__type">Consumer Education</span><span class="hv-related__title">How to Read an Ayurvedic Product Label</span></a>
+  <a href="/research/how-to-read-clinical-trial" class="hv-related__card"><span class="hv-related__type">Research Guide</span><span class="hv-related__title">How to Read a Clinical Trial About Ayurvedic Herbs</span></a>
+  <a href="/research/ayurveda-clinical-trials-2025-2026" class="hv-related__card"><span class="hv-related__type">Research News</span><span class="hv-related__title">5 Ayurveda Clinical Trials From 2025-2026</span></a>
+</div>
+
+<DisclaimerBanner />
+
+<div class="hv-byline-foot">
+  <p><strong>About this page.</strong> Written by Ash, Research Editor at HerbVerdict. No financial relationship with any curcumin extract manufacturer.</p>
+  <p><strong>Last updated:</strong> April 2026. Next scheduled review: October 2026.</p>
+</div>
+
+<style>
+  .hv-hero { padding: 28px 0 12px; }
+  .hv-hero--gold h1 { color:#7a4d10; }
+  .hv-hero__meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+  .hv-pill { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:600; }
+  .hv-pill--gold { background:#fdecbb; color:#7a4d10; border:1px solid #f0d28b; }
+  .hv-pill--neutral { background:#f4f1ea; color:#5b4a2c; border:1px solid #e3dcc9; }
+  .hv-hero__byline { color:#666; font-size:14px; margin:6px 0 14px; }
+  .hv-hero__lede { font-size:18px; line-height:1.55; max-width:64ch; }
+  .hv-tldr-yellow { background:#fff8e1; border:1px solid #f0d28b; border-radius:14px; padding:18px 20px; margin:24px 0; }
+  .hv-tldr-yellow h2 { margin:0 0 6px; color:#7a4d10; font-size:18px; }
+  .hv-tldr-yellow p { margin:0; line-height:1.55; }
+  .hv-callout { padding:14px 16px; border-radius:10px; margin:18px 0; line-height:1.55; }
+  .hv-callout--gold { background:#fff8e1; border-left:4px solid #d29a2a; }
+  .hv-callout--neutral { background:#f4f1ea; border-left:4px solid #7d5a32; }
+  .hv-svg-frame { margin:22px 0; }
+  .hv-study-card { border:1px solid #f0d28b; border-radius:12px; padding:14px 16px; margin:18px 0; background:#fffaf0; }
+  .hv-study-card__head { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+  .hv-study-card h4 { margin:6px 0 8px; color:#7a4d10; font-size:16px; }
+  .hv-tag { font-size:11px; font-weight:600; background:#fdecbb; color:#7a4d10; padding:3px 8px; border-radius:6px; }
+  .hv-tag--rct { background:#e9f3ec; color:#1d5026; }
+  .hv-tag--meta { background:#eef0fb; color:#3a3f8a; }
+  .hv-meta-table { width:100%; border-collapse:collapse; font-size:14px; }
+  .hv-meta-table th { width:120px; text-align:left; padding:6px 8px 6px 0; vertical-align:top; color:#555; font-weight:600; }
+  .hv-meta-table td { padding:6px 0; border-bottom:1px solid #f3e9d3; vertical-align:top; }
+  .hv-pullquote { font-size:18px; font-style:italic; color:#7a4d10; border-left:4px solid #d29a2a; padding:8px 0 8px 16px; margin:22px 0; max-width:60ch; }
+  .hv-verdict { display:flex; gap:14px; background:#fffaf0; border:1px solid #f0d28b; border-radius:14px; padding:16px; margin:24px 0; }
+  .hv-verdict__rail { width:6px; border-radius:3px; }
+  .hv-verdict__rail--promising { background:linear-gradient(#d29a2a,#9b6b1a); }
+  .hv-verdict__pill { display:inline-block; background:#9b6b1a; color:#fff; font-weight:700; padding:6px 12px; border-radius:8px; }
+  .hv-verdict__body h3 { margin:10px 0 6px; color:#7a4d10; }
+  .hv-label-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:18px 0; }
+  .hv-label-card { background:#fff; border:1px solid #f0d28b; border-radius:12px; padding:16px 14px; position:relative; }
+  .hv-label-card__num { position:absolute; top:-12px; left:14px; background:#d29a2a; color:#fff; font-weight:700; padding:4px 10px; border-radius:999px; font-size:12px; }
+  .hv-label-card h4 { margin:8px 0 6px; color:#7a4d10; font-size:15px; }
+  .hv-label-card p { margin:0; font-size:13.5px; line-height:1.55; }
+  .hv-compare { width:100%; border-collapse:collapse; margin:18px 0; font-size:14px; }
+  .hv-compare th, .hv-compare td { border:1px solid #f0d28b; padding:10px 12px; text-align:left; vertical-align:top; }
+  .hv-compare thead th { background:#fff8e1; color:#7a4d10; }
+  .hv-faq details { border:1px solid #f0d28b; border-radius:10px; padding:12px 14px; margin:10px 0; background:#fff; }
+  .hv-faq summary { cursor:pointer; font-weight:600; color:#7a4d10; }
+  .hv-faq p { margin:8px 0 0; line-height:1.6; }
+  .hv-related { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:18px 0; }
+  .hv-related__card { display:block; padding:14px 16px; border:1px solid #f0d28b; border-radius:12px; background:#fffaf0; text-decoration:none; color:#7a4d10; }
+  .hv-related__type { display:block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#9b6b1a; margin-bottom:6px; }
+  .hv-related__title { display:block; font-size:14px; font-weight:600; }
+  .hv-refs { font-size:14px; line-height:1.55; padding-left:1.2em; }
+  .hv-refs li { margin:8px 0; }
+  .hv-byline-foot { font-size:13px; color:#555; margin-top:24px; padding:16px; background:#fff8e1; border-radius:10px; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "headline": "Turmeric Evidence Scorecard: The Bioavailability Problem Nobody Talks About",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-04-27",
+  "author": {"@type":"Person","name":"Ash","jobTitle":"Research Editor"},
+  "publisher": {"@type":"Organization","name":"HerbVerdict"},
+  "mainEntity": {
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is haldi doodh as effective as curcumin supplements?","acceptedAnswer":{"@type":"Answer","text":"No clinical trial has used haldi doodh as an intervention. Curcumin doses in successful RCTs are an order of magnitude higher than what dietary turmeric provides."}},
+      {"@type":"Question","name":"What is the difference between turmeric and curcumin?","acceptedAnswer":{"@type":"Answer","text":"Turmeric is the whole rhizome powder. Curcumin is one of three curcuminoid pigments, making up only 2 to 5 percent of dried turmeric by weight."}},
+      {"@type":"Question","name":"Does turmeric really need piperine to work?","acceptedAnswer":{"@type":"Answer","text":"Curcumin alone is poorly absorbed. Piperine raises absorption substantially. Lipid and phytosome formulations achieve similar or higher bioavailability without piperine."}}
+    ]
+  }
+}
+</script>

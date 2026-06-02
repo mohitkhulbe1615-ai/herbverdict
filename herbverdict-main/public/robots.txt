@@ -1,0 +1,5 @@
+# HerbVerdict robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.herbverdict.com/sitemap.xml
