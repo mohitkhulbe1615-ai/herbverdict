@@ -59,10 +59,13 @@ export const metadata = {
     siteName: SITE.name,
     locale: "en_IN",
     type: "website",
+    url: SITE.url,
+    images: [{ url: SITE.defaultOgImage, width: 1200, height: 630, alt: SITE.name }],
   },
   twitter: {
     card: "summary_large_image",
     site: SITE.twitter,
+    images: [SITE.defaultOgImage],
   },
   robots: {
     index: true,

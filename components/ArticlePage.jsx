@@ -51,17 +51,23 @@ function ReviewBar({ fm, section }) {
 
 export default function ArticlePage({ content, section, slug }) {
   const fm = content.frontmatter;
+  // Prefer the visible H1 so structured data always matches the page.
+  const headline = content.h1 || fm.title;
   return (
     <>
       <ArticleSchema
-        title={fm.title}
+        title={headline}
         description={fm.description}
         datePublished={fm.publishDate}
         dateModified={fm.lastUpdated}
         slug={`${section}/${slug}`}
-        type={fm.schemaType === "MedicalWebPage" ? "herb" : "article"}
+        section={section}
+        author={fm.author}
+        authorRole={fm.authorRole}
+        image={fm.ogImage}
+        type={fm.schemaType}
       />
-      <BreadcrumbSchema section={section} slug={slug} title={fm.title} />
+      <BreadcrumbSchema section={section} slug={slug} title={headline} />
       {content.jsonLd && (
         <script
           type="application/ld+json"

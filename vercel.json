@@ -39,6 +39,11 @@
       "source": "/news/:path*",
       "destination": "/research/:path*",
       "permanent": true
+    },
+    {
+      "source": "/herbs/shilajit-evidence-scorecard",
+      "destination": "/herbs/shilajit",
+      "permanent": true
     }
   ]
 }

@@ -1,45 +1,39 @@
 import { getAllContent } from "@/lib/content";
-import { herbs } from "@/lib/herbs";
 
 const BASE_URL = "https://www.herbverdict.com";
 
+// Real edit dates for static pages. Google devalues lastmod when every page
+// claims to change on every deploy, so these are updated by hand, not by clock.
+const STATIC_PAGES = [
+  { path: "", lastModified: "2026-06-15", changeFrequency: "weekly", priority: 1.0 },
+  { path: "/herbs", lastModified: "2026-06-15", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/reviews", lastModified: "2026-06-15", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/guides", lastModified: "2026-06-15", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/research", lastModified: "2026-06-15", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/myths", lastModified: "2026-06-15", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/about", lastModified: "2026-05-20", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/authors/ash", lastModified: "2026-05-20", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/methodology", lastModified: "2026-05-20", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/editorial-policy", lastModified: "2026-05-20", changeFrequency: "yearly", priority: 0.5 },
+  { path: "/disclaimer", lastModified: "2026-05-20", changeFrequency: "yearly", priority: 0.3 },
+];
+
 export default function sitemap() {
-  const now = new Date().toISOString();
+  const staticPages = STATIC_PAGES.map(p => ({
+    url: `${BASE_URL}${p.path}`,
+    lastModified: p.lastModified,
+    changeFrequency: p.changeFrequency,
+    priority: p.priority,
+  }));
 
-  // Static pages
-  const staticPages = [
-    { url: BASE_URL, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
-    { url: `${BASE_URL}/herbs`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${BASE_URL}/reviews`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE_URL}/guides`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/research`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE_URL}/myths`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE_URL}/authors/ash`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE_URL}/methodology`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE_URL}/editorial-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
-    { url: `${BASE_URL}/disclaimer`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-  ];
-
-  // All content articles from MDX files
-  const allContent = getAllContent();
-  const articlePages = allContent.map(article => ({
+  // Every article URL comes from a real MDX file. There are no placeholder
+  // herb pages, so nothing thin or empty is ever submitted to Google.
+  const articlePages = getAllContent().map(article => ({
     url: `${BASE_URL}/${article.section}/${article.slug}`,
-    lastModified: article.lastUpdated || article.publishDate || now,
+    lastModified: article.lastUpdated || article.publishDate,
     changeFrequency: "monthly",
     priority: 0.9,
   }));
 
-  // Herb placeholder pages (from lib/herbs.js data that don't have MDX files yet)
-  const contentHerbSlugs = allContent.filter(a => a.section === "herbs").map(a => a.slug);
-  const placeholderHerbs = herbs
-    .filter(h => !contentHerbSlugs.includes(h.slug))
-    .map(h => ({
-      url: `${BASE_URL}/herbs/${h.slug}`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    }));
-
-  return [...staticPages, ...articlePages, ...placeholderHerbs];
+  return [...staticPages, ...articlePages];
 }

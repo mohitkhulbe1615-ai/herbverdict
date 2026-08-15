@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { herbs, getVerdictClass } from "@/lib/herbs";
+import { getVerdictClass } from "@/lib/herbs";
+import { getHerbsIndex, getAllContent } from "@/lib/content";
+import EvidenceChart from "@/components/EvidenceChart";
 
 export const metadata = {
   alternates: { canonical: "/herbs" },
@@ -8,6 +10,9 @@ export const metadata = {
 };
 
 export default function HerbsIndex() {
+  const herbs = getHerbsIndex();
+  const all = getAllContent();
+  const countIn = (section) => all.filter(a => a.section === section).length;
   const proven = herbs.filter(h => h.verdict === "PROVEN");
   const promising = herbs.filter(h => h.verdict === "PROMISING");
   const limited = herbs.filter(h => h.verdict === "LIMITED");
@@ -43,6 +48,13 @@ export default function HerbsIndex() {
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 22, fontWeight: 700, color: "var(--green-accent)" }}>{herbs.length}</span>
           <span style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--medium)" }}>herbs reviewed with clinical trial evidence — rated Proven, Promising, or Limited</span>
         </div>
+      </div>
+
+      {/* Trial base chart */}
+      <div className="container" style={{ paddingTop: 4, paddingBottom: 4 }}>
+        <div className="label" style={{ marginBottom: 4 }}>The trial base</div>
+        <h2 style={{ fontSize: 20, fontWeight: 700, margin: "0 0 4px" }}>How much human evidence actually exists</h2>
+        <EvidenceChart herbs={herbs} />
       </div>
 
       {/* Verdict groups */}
@@ -88,10 +100,10 @@ export default function HerbsIndex() {
           <div className="section-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
             {[
               { label: "Herb Scorecards", count: `${herbs.length} herbs`, href: "/herbs", icon: "🌿", active: true },
-              { label: "Product Reviews", count: "5 reviews", href: "/reviews", icon: "🔬" },
-              { label: "Consumer Guides", count: "6 guides", href: "/guides", icon: "📋" },
-              { label: "Research News", count: "1 article", href: "/research", icon: "📰" },
-              { label: "Myth Busting", count: "1 investigation", href: "/myths", icon: "🔍" },
+              { label: "Product Reviews", count: `${countIn("reviews")} reviews`, href: "/reviews", icon: "🔬" },
+              { label: "Consumer Guides", count: `${countIn("guides")} guides`, href: "/guides", icon: "📋" },
+              { label: "Research News", count: `${countIn("research")} articles`, href: "/research", icon: "📰" },
+              { label: "Myth Busting", count: `${countIn("myths")} investigations`, href: "/myths", icon: "🔍" },
             ].map(s => (
               <Link key={s.href} href={s.href} style={{
                 display: "block", padding: "16px 12px", background: "#fff",

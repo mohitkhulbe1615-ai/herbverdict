@@ -13,11 +13,32 @@ export default function Newsletter({ variant = "dark" }) {
   const inputBorder = isDark ? "#333" : "var(--border)";
   const inputColor = isDark ? "#fff" : "var(--dark)";
 
-  const handleSubmit = (e) => {
+  // Set NEXT_PUBLIC_NEWSLETTER_ENDPOINT in Vercel to your list provider's
+  // form-post URL (Zoho Campaigns, Buttondown, Beehiiv, etc). Until that is
+  // set, the form never claims a subscription it did not make.
+  const ENDPOINT = process.env.NEXT_PUBLIC_NEWSLETTER_ENDPOINT;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    if (!ENDPOINT) {
+      setStatus("unavailable");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error(`Subscribe failed: ${res.status}`);
       setStatus("subscribed");
       setEmail("");
+    } catch (err) {
+      setStatus("error");
     }
   };
 
@@ -39,7 +60,15 @@ export default function Newsletter({ variant = "dark" }) {
 
         {status === "subscribed" ? (
           <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--green-accent)", fontWeight: 600 }}>
-            ✓ You're subscribed! Check your inbox.
+            ✓ You're on the list. A confirmation email is on its way.
+          </p>
+        ) : status === "unavailable" || status === "error" ? (
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: subColor, lineHeight: 1.6 }}>
+            Sign-ups aren't running through this form yet. Email{" "}
+            <a href="mailto:ash@herbverdict.com?subject=Newsletter" style={{ color: "var(--green-accent)", fontWeight: 600 }}>
+              ash@herbverdict.com
+            </a>{" "}
+            and you'll be added by hand.
           </p>
         ) : (
           <form onSubmit={handleSubmit} className="newsletter-form" style={{ display: "flex", gap: 8, maxWidth: 440, margin: "0 auto" }}>
@@ -53,7 +82,9 @@ export default function Newsletter({ variant = "dark" }) {
                 background: inputBg, color: inputColor, outline: "none",
               }}
             />
-            <button type="submit" className="btn-primary">Subscribe</button>
+            <button type="submit" className="btn-primary" disabled={status === "sending"}>
+              {status === "sending" ? "Adding…" : "Subscribe"}
+            </button>
           </form>
         )}
       </div>
